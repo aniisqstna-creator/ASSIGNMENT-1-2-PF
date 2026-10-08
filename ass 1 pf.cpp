@@ -9,7 +9,7 @@ void getpriority(string &patientCategory, int &priorityLevel, int &waitingTime, 
 //function untuk display maklumat pesakit
 void displayPatientInformation(string &patientName, string &arrivalTime, string &patientCategory, int &age, int &priorityLevel, int &waitingTime, string &queueNumber);
 //function untuk panggilan sape yang penting
-
+void emergencyCalls(int &priorityLevel);
 
 int main() {
     string patientName;
@@ -38,7 +38,7 @@ int main() {
         displayPatientInformation(patientName, arrivalTime, patientCategory, age, priorityLevel, waitingTime, queueNumber);
         
         //function untuk panggilan sape yang penting
-       
+        emergencyCalls(priorityLevel);
 
         cout << "\nRegister another patient?(Y/N): ";
         cin >> choice;
@@ -111,4 +111,18 @@ void displayPatientInformation(string &patientName, string &arrivalTime, string 
     cout << "Queue Number : " << queueNumber << endl;
 }
 //function untuk panggilan sape yang penting
-
+void emergencyCalls(int &priorityLevel) {
+    if (priorityLevel == 1) {
+        cout << "\n!!! EMERGENCY PATIENT !!!" << endl;
+        cout << "Please proceed to the emergency department." << endl;
+        cout << "Your case will be attended immediately." << endl;
+    }
+    else if (priorityLevel == 2) {
+        cout << "\nPRIORITY PATIENT" << endl;
+        cout << "You will be served before normal patients." << endl;
+    }
+    else if (priorityLevel == 3) {
+        cout << "\nSTANDARD PATIENT" << endl;
+        cout << "Please wait until your queue number is called." << endl;
+    }
+}
